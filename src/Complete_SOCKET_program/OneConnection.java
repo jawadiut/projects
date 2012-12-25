@@ -21,11 +21,7 @@ class OneConnection {
         in = new BufferedReader(
                 new InputStreamReader( sock.getInputStream() ) );
         out = new DataOutputStream(sock.getOutputStream());
-        /*in2 = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-        while((str = in2.readLine())!=null){
-            // out.writeBytes(s);
-            System.out.println(str);
-        }*/
+
     }
 
     String getRequest() throws Exception {
@@ -34,9 +30,7 @@ class OneConnection {
         int counter = 0;
         while ( (s=in.readLine()).length()!=0) {
             System.out.println("got: "+s);
-            /*for(String st:s.split("/")){
 
-            }*/
             if(counter==0)value = s.split(" ");
             counter++;
 
@@ -53,14 +47,7 @@ class OneConnection {
         out.writeBytes("Content-length: "+ len +"\n");
         out.writeBytes("Content-Type: text/html\n\n");
 
-       /* in2 = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-        while((st = in2.readLine())!=null){
-            //out.writeBytes(str);
-            //out.writeBytes("\r\n");
-            str += st;
-            str += "\n";
-            System.out.println(st);
-        }*/
+
         out.write(buf);
         out.flush();
         in.close();

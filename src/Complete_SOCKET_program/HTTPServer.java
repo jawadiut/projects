@@ -23,18 +23,11 @@ public class HTTPServer{
         }
         System.out.println("have opened port 1080 locally");
         while(true){
-            /*sock = ssock.accept();
 
-            System.out.println("client has made socket connection");
-            OneConnection client = new OneConnection(sock);
-            String s = client.getRequest();*/
             new HTTPThread(ssock.accept()).start();
         }
 
 
     }
-    /*public void run(){
 
-
-    }*/
 }
